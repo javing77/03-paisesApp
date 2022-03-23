@@ -1,0 +1,35 @@
+<h3>Buscar por Region<small> {{regionActiva | titlecase}} </small></h3>
+
+<div class="row">
+
+  <!-- Cambiar de clases al dar click -->
+  <!-- [class.btn-primary] = "region == regionActiva" -->
+  <!-- [ngClass]="{
+    'btn-primary' : regionActiva === region,
+    'btn-outline-primary' : regionActiva !== region
+  }"
+   -->
+
+   <!-- Finalmente se opta por dejarla en el typescript como una clase getClaseCSS
+    para mantener esta html limpio -->
+
+  <div class="col">
+    <button *ngFor="let region of regiones"
+    [class]="getClaseCSS(region)"
+    (click)="activarRegion(region)"
+    (click)="buscar(region)"
+    >
+      {{region | titlecase }}
+    </button>
+    <p></p>
+  </div>
+
+  <hr>
+  <div class="row">
+    <div class="col">
+      <app-pais-tabla [paises]="paises" ></app-pais-tabla>
+    </div>
+  </div>
+
+
+</div>
